@@ -4,9 +4,9 @@ import com.andikscript.databasemigration.model.Save;
 import com.andikscript.databasemigration.repository.SaveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.google.gson.Gson;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class SaveImpl implements SaveService {
@@ -27,5 +27,17 @@ public class SaveImpl implements SaveService {
     @Override
     public List<Save> getAll() {
         return saveRepository.findAll();
+    }
+
+    @Override
+    public List<Object> getAllWithoutId() {
+        Map<String, Object> m = new HashMap<>();
+        List<Object> list = new ArrayList<>();
+        saveRepository.findAll().forEach(e -> {
+            m.put("nama", e.getNama());
+            m.put("keterangan", e.getKeterangan());
+            list.add(m);
+        });
+        return list;
     }
 }

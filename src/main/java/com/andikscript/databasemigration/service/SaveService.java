@@ -2,14 +2,12 @@ package com.andikscript.databasemigration.service;
 
 import com.andikscript.databasemigration.model.Save;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public interface SaveService {
 
-    public void add(Save s);
-
-    public Optional<Save> getSave(Integer id);
-
-    public List<Save> getAll();
+    void add(Save s);
+    Optional<Save> getSave(Integer id);
+    List<Save> getAll();
+    List<Object> getAllWithoutId();
 }

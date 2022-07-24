@@ -37,4 +37,10 @@ public class SaveController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Succesfully created");
     }
+
+    @GetMapping(value = "/saveswithoutid")
+    public ResponseEntity<?> getAllSaveWithoutId() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(saveService.getAllWithoutId());
+    }
 }
