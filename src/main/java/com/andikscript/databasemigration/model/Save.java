@@ -16,6 +16,9 @@ public class Save {
     @Column(name = "keterangan", nullable = false, length = 1048)
     private String keterangan;
 
+    @Column(name = "gaji", nullable = false)
+    private Integer gaji;
+
     public Integer getId() {
         return id;
     }
@@ -40,4 +43,11 @@ public class Save {
         this.keterangan = keterangan;
     }
 
+    public Integer getGaji() {
+        return gaji;
+    }
+
+    public void setGaji(Integer gaji) {
+        this.gaji = gaji;
+    }
 }
