@@ -4,7 +4,6 @@ import com.andikscript.databasemigration.model.Save;
 import com.andikscript.databasemigration.repository.SaveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.google.gson.Gson;
 
 import java.util.*;
 
