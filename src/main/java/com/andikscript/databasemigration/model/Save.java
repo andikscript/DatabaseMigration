@@ -1,14 +1,15 @@
 package com.andikscript.databasemigration.model;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "save")
 public class Save {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @GeneratedValue
+    @Column(name = "id", length = 16)
+    private UUID id;
 
     @Column(name = "nama", nullable = false, length = 512)
     private String nama;
@@ -19,12 +20,8 @@ public class Save {
     @Column(name = "gaji", nullable = false)
     private Integer gaji;
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNama() {
