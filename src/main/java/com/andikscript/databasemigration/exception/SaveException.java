@@ -15,8 +15,11 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class SaveException  extends ResponseEntityExceptionHandler {
@@ -29,13 +32,19 @@ public class SaveException  extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        List<String> err = new ArrayList<>();
+
+        for (FieldError error : ex.getFieldErrors()) {
+            err.add(error.getDefaultMessage());
+        }
+
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new ApiError(
                         HttpStatus.BAD_REQUEST,
                         LocalDateTime.now(),
                         "Validate Error",
-                        ex.getBindingResult().toString()
+                        err
                 ));
 }
 }
