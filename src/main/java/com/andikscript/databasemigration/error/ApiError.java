@@ -3,6 +3,7 @@ package com.andikscript.databasemigration.error;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ApiError {
 
@@ -12,9 +13,9 @@ public class ApiError {
 
     private String message;
 
-    private String details;
+    private List details;
 
-    public ApiError(HttpStatus http_status, LocalDateTime timestamp, String message, String details) {
+    public ApiError(HttpStatus http_status, LocalDateTime timestamp, String message, List details) {
         this.http_status = http_status;
         this.timestamp = timestamp;
         this.message = message;
@@ -45,11 +46,11 @@ public class ApiError {
         this.message = message;
     }
 
-    public String getDetails() {
+    public List getDetails() {
         return details;
     }
 
-    public void setDetails(String details) {
+    public void setDetails(List details) {
         this.details = details;
     }
 }
