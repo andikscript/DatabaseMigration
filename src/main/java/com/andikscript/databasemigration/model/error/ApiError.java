@@ -1,4 +1,4 @@
-package com.andikscript.databasemigration.error;
+package com.andikscript.databasemigration.model.error;
 
 import org.springframework.http.HttpStatus;
 
