@@ -1,6 +1,8 @@
 package com.andikscript.databasemigration.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Entity
@@ -11,12 +13,15 @@ public class Save {
     @Column(name = "id", length = 16)
     private UUID id;
 
+    @NotBlank(message = "name is mandatory")
     @Column(name = "nama", nullable = false, length = 512)
     private String nama;
 
+    @NotBlank(message = "keterangan is mandatory")
     @Column(name = "keterangan", nullable = false, length = 1048)
     private String keterangan;
 
+    @NotNull(message = "gaji is mandatory")
     @Column(name = "gaji", nullable = false)
     private Integer gaji;
 
