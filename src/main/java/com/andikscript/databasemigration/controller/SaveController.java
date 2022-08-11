@@ -1,12 +1,15 @@
 package com.andikscript.databasemigration.controller;
 
+import com.andikscript.databasemigration.message.ResponseMessage;
 import com.andikscript.databasemigration.model.Save;
 import com.andikscript.databasemigration.service.SaveService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -32,7 +35,7 @@ public class SaveController {
     }
 
     @PostMapping(value = "/add", consumes = "application/json")
-    public ResponseEntity<?> addSave(@RequestBody Save s) {
+    public ResponseEntity<?> addSave(@Valid @RequestBody Save s) {
         saveService.add(s);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Succesfully created");
