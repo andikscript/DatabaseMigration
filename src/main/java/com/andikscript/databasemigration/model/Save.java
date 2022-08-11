@@ -1,5 +1,7 @@
 package com.andikscript.databasemigration.model;
 
+import com.andikscript.databasemigration.constraints.GajiValue;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -23,6 +25,7 @@ public class Save {
 
     @NotNull(message = "gaji is mandatory")
     @Column(name = "gaji", nullable = false)
+    @GajiValue(message = "gaji denied")
     private Integer gaji;
 
     public UUID getId() {
